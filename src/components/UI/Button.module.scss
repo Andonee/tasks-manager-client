@@ -1,0 +1,17 @@
+@use '../../styles/variables' as *;
+
+.button {
+	border: 1px solid $primary-color;
+	background: #ebebeb;
+	color: $primary-color;
+	transition: all 0.2s ease-in;
+	padding: 2px 5px;
+	text-transform: uppercase;
+
+	&:hover {
+		color: #ebebeb;
+		border: 1px solid #ebebeb;
+		background: $primary-color;
+		cursor: pointer;
+	}
+}

@@ -27,8 +27,9 @@ const SignIn = () => {
 								{...register('password')}
 							/>
 						</fieldset>
-						<Button text='log in' />
+						<Button text='log in' width='100%' />
 					</form>
+					<Button text='create account' width='100%' />
 				</div>
 			</div>
 		</div>
