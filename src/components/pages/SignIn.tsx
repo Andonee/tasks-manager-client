@@ -2,12 +2,17 @@ import React from 'react'
 import styles from './SignIn.module.scss'
 import { useForm } from 'react-hook-form'
 import { Input, Button } from '../UI'
+import { useDispatch } from 'react-redux'
+import { signup } from '../../store/actions/auth'
+import { RouteComponentProps } from 'react-router-dom'
 
-const SignIn = () => {
+const SignIn: React.SFC<RouteComponentProps> = ({ history }) => {
 	const { register, handleSubmit, reset } = useForm()
+	const dispatch = useDispatch()
 
 	const onSubmitHandler = (data: any) => {
-		console.log(data)
+		// console.log(data)
+		dispatch(signup(data, user => history.push(`/projects/${user}`)))
 	}
 
 	return (

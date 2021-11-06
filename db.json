@@ -3,7 +3,14 @@
     {
       "email": "test@test.pl",
       "password": "$2a$10$hPsn/JQYUPdIlejelIA1W.uuN0bgrHG.HdSTyubJgARS/zfXyti/6",
-      "id": 1
+      "id": 1,
+      "firstname": "test"
+    },
+    {
+      "email": "test2@test.pl",
+      "password": "$2a$10$Iidf.u.amiek4Y3s7Ook7ejCtSyi7q9OHBeE6YV19OyLfJOwW2u7G",
+      "user": "lolo",
+      "id": 2
     }
   ]
 }

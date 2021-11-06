@@ -1,7 +1,8 @@
 import React from 'react'
+import WithNavbar from '../hoc/WithNavbar'
 
 const Projects = () => {
 	return <div>Projects</div>
 }
 
-export default Projects
+export default WithNavbar(Projects)

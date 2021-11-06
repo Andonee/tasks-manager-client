@@ -4,6 +4,8 @@ import './index.css'
 import App from './components/App/App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from './store/store'
 import {
 	ProfilCustomize,
 	Project,
@@ -12,21 +14,31 @@ import {
 	SignOut,
 } from './components/pages'
 
+declare global {
+	namespace JSX {
+		interface IntrinsicElements {
+			'ion-icon': { name: string; class: string }
+		}
+	}
+}
+
 ReactDOM.render(
 	<React.StrictMode>
-		<Router>
-			<App>
-				<Route exact path='/' component={SignIn} />
-				<Route exact path='/signout' component={SignOut} />
-				<Route exact path='/:user/projects' component={Projects} />
-				<Route exact path='/:user/projects/:projectId' component={Project} />
-				<Route
-					exact
-					path='/:user/projects/:projectId/profile'
-					component={ProfilCustomize}
-				/>
-			</App>
-		</Router>
+		<Provider store={store}>
+			<Router>
+				<App>
+					<Route exact path='/' component={SignIn} />
+					<Route exact path='/signout' component={SignOut} />
+					<Route exact path='/projects/:user' component={Projects} />
+					<Route exact path='/projects/:user/:projectId' component={Project} />
+					<Route
+						exact
+						path='/:user/projects/:projectId/profile'
+						component={ProfilCustomize}
+					/>
+				</App>
+			</Router>
+		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')
 )
