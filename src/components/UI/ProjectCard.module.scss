@@ -1,12 +1,13 @@
 @use '../../styles/variables' as *;
 
-.button {
+.card {
 	border: 1px solid transparent;
 	background: #ebebeb;
 	color: $primary-color;
 	transition: all 0.2s ease-in;
-	padding: 2px 5px;
-	text-transform: uppercase;
+	padding: 5px 15px;
+	margin: 15px auto;
+	width: 80%;
 	box-shadow: $box-shadow-button;
 
 	&:hover {
