@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Navbar.module.scss'
 import NavButton from '../UI/NavButton'
+import avatar from '../../assets/images/tasks-avatar.png'
 
 const Navbar = () => {
 	const onLogoutHandler = () => {
@@ -10,10 +11,21 @@ const Navbar = () => {
 	return (
 		<nav className={styles.navbar}>
 			<div className={styles.navbar__links}>
-				<NavButton to='/' icon='exit-outline' />
+				<NavButton to='/' type='img' src={avatar} alt='user avatar' />
+				<NavButton
+					to='/projects/1/sfsdf'
+					type='icon'
+					icon='exit-outline'
+					stylee='activeLink'
+				/>
 			</div>
 			<div className={styles.navbar__links}>
-				<NavButton to='/' icon='exit-outline' onClick={onLogoutHandler} />
+				<NavButton
+					to='/'
+					type='icon'
+					icon='exit-outline'
+					onClick={onLogoutHandler}
+				/>
 			</div>
 		</nav>
 	)

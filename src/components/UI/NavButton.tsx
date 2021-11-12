@@ -4,15 +4,34 @@ import styles from './NavButton.module.scss'
 
 type NavButtonProps = {
 	to: string
-	style?: string
-	icon: string
+	stylee?: string
+	type: 'icon' | 'img'
+	icon?: string
+	src?: string
+	alt?: string
 	onClick?: () => void
 }
 
-const NavButton = ({ to, style, icon, onClick }: NavButtonProps) => {
+const NavButton = ({
+	to,
+	stylee,
+	type,
+	icon,
+	src,
+	alt,
+	onClick,
+}: NavButtonProps) => {
 	return (
-		<NavLink to={to} activeClassName={style} onClick={onClick}>
-			<ion-icon name={icon} class={styles.navLink__icon}></ion-icon>
+		<NavLink
+			className={styles.navlink}
+			to={to}
+			activeClassName={stylee}
+			onClick={onClick}
+		>
+			{type === 'img' && <img src={src} alt={alt} />}
+			{type === 'icon' && (
+				<ion-icon name={icon} class={styles.navlink__icon}></ion-icon>
+			)}
 		</NavLink>
 	)
 }

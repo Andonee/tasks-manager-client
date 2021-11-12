@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
+import './index.scss'
 import App from './components/App/App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -17,7 +17,7 @@ import {
 declare global {
 	namespace JSX {
 		interface IntrinsicElements {
-			'ion-icon': { name: string; class: string }
+			'ion-icon': { name?: string; class: string }
 		}
 	}
 }
