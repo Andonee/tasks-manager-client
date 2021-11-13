@@ -1,4 +1,5 @@
 import { AUTH_ERROR, AUTH_SUCCESS, AuthDispatchTypes } from '../types/auth'
+import { Reducer } from 'redux'
 
 export type authStoreType = {
 	auth: string
@@ -12,7 +13,10 @@ const initialState: authStoreType = {
 	error: '',
 }
 
-const authReducer = (state = initialState, action: AuthDispatchTypes) => {
+const authReducer: Reducer<authStoreType, AuthDispatchTypes> = (
+	state = initialState,
+	action
+) => {
 	switch (action.type) {
 		case AUTH_SUCCESS:
 			return {
@@ -23,7 +27,7 @@ const authReducer = (state = initialState, action: AuthDispatchTypes) => {
 		case AUTH_ERROR:
 			return {
 				...state,
-				error: action.payload,
+				error: 'Some error occured',
 			}
 		default:
 			return state

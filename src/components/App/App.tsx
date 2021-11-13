@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import styles from './App.module.scss'
 import { useDispatch } from 'react-redux'
 import { AUTH_SUCCESS } from '../../store/types/auth'
+import { fetchTasks } from '../../store/actions/tasks'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 import jwt_decode, { JwtPayload } from 'jwt-decode'
 
@@ -30,6 +31,8 @@ const App: React.SFC<AppProps> = ({ children, history }) => {
 					userId,
 				}
 				dispatch({ type: AUTH_SUCCESS, payload: authData })
+				dispatch(fetchTasks())
+
 				history.push(`/projects/${userId}`)
 			} else {
 				localStorage.removeItem('token')

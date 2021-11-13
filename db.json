@@ -12,5 +12,30 @@
       "user": "lolo",
       "id": 2
     }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "projectID": "1",
+      "title": "Awesome Project",
+      "description": "This is a really awesome project",
+      "edited": "November 12th 2021, 7:01:24 pm",
+      "tasks": [
+        {
+          "task": "Do awesome thing",
+          "status": "todo"
+        },
+        {
+          "task": "Suit up!",
+          "status": "done",
+          "time": "November 10th 2021, 11:33:54 pm"
+        },
+        {
+          "task": "Finish this app",
+          "status": "in progress"
+        }
+        
+      ]
+    }
   ]
 }
