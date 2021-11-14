@@ -3,19 +3,21 @@ import {
 	FETCH_FAILURE,
 	FETCH_REQUEST,
 	FETCH_SUCCESS,
-	PostProjectsType,
 	GetProjectsType,
+	REFETCH_DATA,
 } from '../types/tasks'
 import { Reducer } from 'redux'
 
 export type tasksStoreType = {
 	tasks: GetProjectsType[]
 	state: 'idle' | 'loading' | 'fetched' | 'error'
+	refetch: boolean
 }
 
 const initialState: tasksStoreType = {
 	tasks: [],
 	state: 'idle',
+	refetch: true,
 }
 
 const tasksReducer: Reducer<tasksStoreType, FetchDispatchTypes> = (
@@ -30,13 +32,21 @@ const tasksReducer: Reducer<tasksStoreType, FetchDispatchTypes> = (
 			}
 		case FETCH_SUCCESS:
 			return {
+				...state,
 				tasks: action.payload,
 				state: 'fetched',
+				refetch: false,
 			}
 		case FETCH_FAILURE:
 			return {
 				...state,
 				state: 'error',
+				refetch: false,
+			}
+		case REFETCH_DATA:
+			return {
+				...state,
+				refetch: true,
 			}
 		default:
 			return state

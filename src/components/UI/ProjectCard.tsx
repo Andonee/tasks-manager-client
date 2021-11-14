@@ -1,19 +1,19 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styles from './ProjectCard.module.scss'
 
 // TODO - change taskID type
 
 type ProjectCardProps = {
 	name: string
-	taskID: number | any
-	onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+	url: string
 }
 
-const ProjectCard = ({ name, taskID, onClick }: ProjectCardProps) => {
+const ProjectCard = ({ name, url }: ProjectCardProps) => {
 	return (
-		<button className={styles.card} id={taskID} onClick={onClick}>
+		<NavLink className={styles.card} to={url}>
 			{name}
-		</button>
+		</NavLink>
 	)
 }
 

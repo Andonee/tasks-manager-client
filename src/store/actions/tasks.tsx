@@ -6,6 +6,7 @@ import {
 	fetchErrorResponse,
 	PostProjectsType,
 	GetProjectsType,
+	REFETCH_DATA,
 } from '../types/tasks'
 import axios, { AxiosError } from 'axios'
 import { ThunkAction } from 'redux-thunk'
@@ -27,8 +28,6 @@ export const fetchTasks = (): ThunkAction<
 
 			const data = await response.data
 
-			console.log(data)
-
 			dispatch({ type: FETCH_SUCCESS, payload: data })
 		} catch (error) {
 			if (axios.isAxiosError(error)) {
@@ -38,5 +37,11 @@ export const fetchTasks = (): ThunkAction<
 				}
 			}
 		}
+	}
+}
+
+export const refetchData = () => {
+	return {
+		type: REFETCH_DATA,
 	}
 }

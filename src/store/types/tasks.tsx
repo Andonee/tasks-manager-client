@@ -1,6 +1,7 @@
 export const FETCH_REQUEST = 'FETCH_REQUEST'
 export const FETCH_SUCCESS = 'FETCH_SUCCESS'
 export const FETCH_FAILURE = 'FETCH_FAILURE'
+export const REFETCH_DATA = 'REFETCH_DATA'
 
 export interface PostProjectsType {
 	projectID: string
@@ -36,9 +37,17 @@ export type fetchFailure = {
 	payload: fetchErrorResponse
 }
 
+export type refetchData = {
+	type: typeof REFETCH_DATA
+}
+
 export type fetchActionType = {
 	type: string
 	payload: fetchRequest | fetchSuccess | fetchFailure
 }
 
-export type FetchDispatchTypes = fetchRequest | fetchSuccess | fetchFailure
+export type FetchDispatchTypes =
+	| fetchRequest
+	| fetchSuccess
+	| fetchFailure
+	| refetchData
