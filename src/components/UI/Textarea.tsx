@@ -1,13 +1,13 @@
 import React from 'react'
-import styles from './Input.module.scss'
+import styles from './Textarea.module.scss'
 
 type inputProps = {
 	value?: string
 	name?: string
-	type?: string
 	label?: string
 	register?: any
 	placeholder?: string
+	rows?: number
 	onChange?: (
 		e:
 			| React.ChangeEvent<HTMLInputElement>
@@ -15,25 +15,24 @@ type inputProps = {
 	) => void
 }
 
-const Input = ({
+const Textarea = ({
 	value,
 	name,
 	label,
-	type = 'text',
 	register,
 	placeholder,
+	rows = 4,
 	onChange,
 }: inputProps) => {
 	return (
 		<>
 			{label && <label htmlFor={name}>{label}</label>}
-			<input
-				className={styles.input}
+			<textarea
 				name={name}
-				type={type}
-				ref={register}
 				placeholder={placeholder}
+				rows={rows}
 				{...register}
+				className={styles.textarea}
 				value={value}
 				onChange={onChange}
 			/>
@@ -41,4 +40,4 @@ const Input = ({
 	)
 }
 
-export default Input
+export default Textarea

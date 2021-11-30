@@ -1,0 +1,16 @@
+@use '../../styles/variables' as *;
+
+.tasksList {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 30%;
+	margin-top: 20px;
+	border: 1px solid $text-color;
+	border-radius: 5px;
+	color: $text-color;
+
+	&__Box {
+		width: 95%;
+	}
+}

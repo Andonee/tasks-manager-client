@@ -8,7 +8,16 @@ export interface PostProjectsType {
 	title: string
 	description: string
 	edited: string
-	tasks: { task: string; status: string; time?: string }[]
+	tasks: taskType[]
+}
+
+export type taskType = {
+	id: string
+	title: string
+	description: string
+	created: string
+	priority: 'low' | 'medium' | 'high'
+	type: 'todo' | 'in progress' | 'done'
 }
 
 export interface GetProjectsType extends PostProjectsType {

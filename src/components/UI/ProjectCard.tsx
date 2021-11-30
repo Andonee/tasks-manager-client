@@ -7,12 +7,19 @@ import styles from './ProjectCard.module.scss'
 type ProjectCardProps = {
 	name: string
 	url: string
+	id: any
+	onRemove: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const ProjectCard = ({ name, url }: ProjectCardProps) => {
+const ProjectCard = ({ name, url, id, onRemove }: ProjectCardProps) => {
 	return (
 		<NavLink className={styles.card} to={url}>
-			{name}
+			<div>
+				{name}{' '}
+				<button onClick={onRemove} id={id}>
+					Remove
+				</button>
+			</div>
 		</NavLink>
 	)
 }

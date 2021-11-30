@@ -1,3 +1,8 @@
 export { default as Input } from './Input'
 export { default as Button } from './Button'
 export { default as ProjectCard } from './ProjectCard'
+export { default as Textarea } from './Textarea'
+export { default as TasksList } from './TasksList'
+export { default as TaskCard } from './TaskCard'
+export { default as Drawer } from './Drawer'
+export { default as Select } from './Select'

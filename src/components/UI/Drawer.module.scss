@@ -1,0 +1,44 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables' as *;
+
+.drawer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 300px;
+	background-color: #fff;
+	height: 100%;
+	transform: translateX(100%);
+	transition: all 0.2s ease-out;
+	box-shadow: -4px 4px 8px -3px #42445a;
+
+	& button {
+		background: none;
+		border: none;
+		color: $primary-color;
+	}
+}
+
+.active {
+	transform: translateX(0);
+}
+
+.form {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	margin-top: 50px;
+	align-items: center;
+
+	& input,
+	textarea,
+	select {
+		@include input-field;
+		width: 90%;
+		margin: 5px auto;
+	}
+
+	& textarea {
+		resize: none;
+	}
+}

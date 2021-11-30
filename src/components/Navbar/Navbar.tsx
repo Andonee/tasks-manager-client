@@ -13,7 +13,7 @@ const Navbar = () => {
 			<div className={styles.navbar__links}>
 				<NavButton to='/' type='img' src={avatar} alt='user avatar' />
 				<NavButton
-					to='/projects/1/sfsdf'
+					to='/projects/1'
 					type='icon'
 					icon='exit-outline'
 					stylee='activeLink'

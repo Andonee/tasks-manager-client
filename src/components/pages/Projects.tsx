@@ -23,7 +23,7 @@ const Projects = () => {
 
 	useEffect(() => {
 		console.log(isRefetch)
-		if (!isRefetch) return
+		// if (!isRefetch) return
 
 		dispatch(fetchTasks())
 	}, [isRefetch, dispatch])
@@ -56,6 +56,29 @@ const Projects = () => {
 		}
 	}
 
+	const onRemoveProjectHandler = async (
+		e: React.MouseEvent<HTMLButtonElement>
+	) => {
+		try {
+			e.preventDefault()
+			e.stopPropagation()
+			const target = e.target as Element
+
+			const id = target.id
+
+			const response = await axios.delete(
+				`${process.env.REACT_APP_BASE_URL}/projects/${id}`
+			)
+
+			const data = await response
+			dispatch(refetchData())
+
+			console.log('Great success!', data)
+		} catch (error) {
+			console.log('Somme terrible error occured')
+		}
+	}
+
 	return (
 		<div className={styles.projects}>
 			<div>
@@ -70,6 +93,8 @@ const Projects = () => {
 					<ProjectCard
 						name={project.title}
 						url={`/projects/${user}/${project.id}`}
+						id={project.id}
+						onRemove={onRemoveProjectHandler}
 					/>
 				))}
 			</div>

@@ -1,7 +1,7 @@
 @use '../../styles/variables' as *;
 
 .button {
-	border: 1px solid transparent;
+	border: 1px solid #cecece;
 	background: #ebebeb;
 	color: $primary-color;
 	transition: all 0.2s ease-in;

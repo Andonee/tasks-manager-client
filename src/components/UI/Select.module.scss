@@ -1,6 +1,6 @@
 @use '../../styles/mixins.scss' as *;
 @use '../../styles/variables' as *;
-.input {
-	@include input-field;
 
+.select {
+	@include input-field;
 }

@@ -17,168 +17,35 @@
     {
       "id": 1,
       "projectID": "1",
-      "title": "Awesome Project",
-      "description": "This is a really awesome project",
-      "edited": "November 12th 2021, 7:01:24 pm",
+      "title": "Awesome project 23",
+      "description": "With awesome description",
+      "edited": "28/11/2021",
       "tasks": [
         {
-          "task": "Do awesome thing",
-          "status": "todo"
+          "id": "T6X4ckls",
+          "title": "sefd",
+          "description": "",
+          "created": "28/11/2021",
+          "priority": "low",
+          "type": "todo"
         },
         {
-          "task": "Suit up!",
-          "status": "done",
-          "time": "November 10th 2021, 11:33:54 pm"
-        },
-        {
-          "task": "Finish this app",
-          "status": "in progress"
+          "id": "9x7TE5LI",
+          "title": "bbbbbbbbbbbb",
+          "description": "",
+          "created": "28/11/2021",
+          "priority": "low",
+          "type": "todo"
         }
       ]
     },
     {
-      "projectID": "v3SO8uZ",
+      "projectID": "TmdoWu9",
       "title": "New Project",
       "description": "",
       "edited": "",
       "tasks": [],
       "id": 2
-    },
-    {
-      "projectID": "UKXTb4r",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 3
-    },
-    {
-      "projectID": "tDORJgI",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 4
-    },
-    {
-      "projectID": "CpM-GYh",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 5
-    },
-    {
-      "projectID": "nbZYMlG",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 6
-    },
-    {
-      "projectID": "OSRvYpl",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 7
-    },
-    {
-      "projectID": "KhUOg9M",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 8
-    },
-    {
-      "projectID": "rRmKDyj",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 9
-    },
-    {
-      "projectID": "U4wMWMU",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 10
-    },
-    {
-      "projectID": "NCAN-Ei",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 11
-    },
-    {
-      "projectID": "nrhlOY9",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 12
-    },
-    {
-      "projectID": "gGfHS5y",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 13
-    },
-    {
-      "projectID": "bSpRp7q",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 14
-    },
-    {
-      "projectID": "C2qLpxT",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 15
-    },
-    {
-      "projectID": "jZh3swW",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 16
-    },
-    {
-      "projectID": "1KfJJ8a",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 17
-    },
-    {
-      "projectID": "MftdMcn",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 18
-    },
-    {
-      "projectID": "QDmhyGu",
-      "title": "New Project",
-      "description": "",
-      "edited": "",
-      "tasks": [],
-      "id": 19
     }
   ]
 }

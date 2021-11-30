@@ -11,7 +11,6 @@ const SignIn: React.SFC<RouteComponentProps> = ({ history }) => {
 	const dispatch = useDispatch()
 
 	const onSubmitHandler = (data: any) => {
-		// console.log(data)
 		dispatch(signup(data, user => history.push(`/projects/${user}`)))
 	}
 
