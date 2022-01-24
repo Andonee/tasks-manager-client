@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './SignIn.module.scss'
 import { useForm } from 'react-hook-form'
 import { Input, Button } from '../UI'
 import { useDispatch } from 'react-redux'
-import { signup } from '../../store/actions/auth'
+import { signin, signup } from '../../store/actions/auth'
 import { RouteComponentProps } from 'react-router-dom'
 
 const SignIn: React.SFC<RouteComponentProps> = ({ history }) => {
 	const { register, handleSubmit, reset } = useForm()
 	const dispatch = useDispatch()
+	const [logInMode, setLogInMode] = useState(true)
 
 	const onSubmitHandler = (data: any) => {
-		dispatch(signup(data, user => history.push(`/projects/${user}`)))
+		if (logInMode) {
+			dispatch(signin(data, user => history.push(`/projects/${user}`)))
+		} else {
+			dispatch(signup(data, user => history.push(`/projects/${user}`)))
+		}
+	}
+
+	const onSwitchModeHander = () => {
+		setLogInMode(!logInMode)
 	}
 
 	return (
@@ -31,9 +40,16 @@ const SignIn: React.SFC<RouteComponentProps> = ({ history }) => {
 								{...register('password')}
 							/>
 						</fieldset>
-						<Button text='log in' width='100%' />
+						<Button
+							text={logInMode ? 'log in' : 'create account'}
+							width='100%'
+						/>
 					</form>
-					<Button text='create account' width='100%' />
+					<Button
+						text={logInMode ? 'go to create account form' : 'go to log in form'}
+						width='100%'
+						onClick={onSwitchModeHander}
+					/>
 				</div>
 			</div>
 		</div>

@@ -9,6 +9,7 @@ export interface PostProjectsType {
 	description: string
 	edited: string
 	tasks: taskType[]
+	belongsTo: string
 }
 
 export type taskType = {

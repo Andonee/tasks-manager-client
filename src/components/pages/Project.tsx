@@ -8,6 +8,8 @@ import { taskType } from '../../store/types/tasks'
 import { nanoid } from 'nanoid'
 import { getCurrentDate } from '../../utils'
 import { refetchData } from '../../store/actions/tasks'
+import { useSelector } from 'react-redux'
+import { RootStore } from '../../store/store'
 
 interface ProjectProps extends RouteComponentProps<any> {}
 
@@ -26,6 +28,8 @@ type actionsType =
 	| { type: 'set_new_task'; payload: string }
 	| { type: 'add_task'; payload: taskType }
 	| { type: 'updated_task'; payload: taskType[] }
+
+const getToken = (state: RootStore) => state.auth.auth
 
 const tasksReducer = (state: typeof initialState, action: actionsType) => {
 	switch (action.type) {
@@ -68,13 +72,20 @@ const tasksReducer = (state: typeof initialState, action: actionsType) => {
 
 const Project: React.SFC<ProjectProps> = ({ history, match }) => {
 	const [state, dispatch] = useReducer(tasksReducer, initialState)
+	const token = useSelector(getToken)
+
 	useEffect(() => {
 		const { user, projectId } = match.params
 
 		const fetchData = async () => {
 			try {
 				const response = await axios(
-					`${process.env.REACT_APP_BASE_URL}/projects/${projectId}`
+					`${process.env.REACT_APP_BASE_URL}/projects/${user}/${projectId}`,
+					{
+						headers: {
+							authorization: token,
+						},
+					}
 				)
 
 				const data = await response
@@ -177,7 +188,7 @@ const Project: React.SFC<ProjectProps> = ({ history, match }) => {
 
 	const onSaveProjectHandler = async () => {
 		try {
-			const { projectId } = match.params
+			const { user, projectId } = match.params
 
 			const dataToSave = {
 				title: state.title,
@@ -186,8 +197,13 @@ const Project: React.SFC<ProjectProps> = ({ history, match }) => {
 				edited: getCurrentDate(),
 			}
 			const response = await axios.patch(
-				`${process.env.REACT_APP_BASE_URL}/projects/${projectId}`,
-				dataToSave
+				`${process.env.REACT_APP_BASE_URL}/projects/${user}/${projectId}`,
+				dataToSave,
+				{
+					headers: {
+						authorization: token,
+					},
+				}
 			)
 
 			const data = await response

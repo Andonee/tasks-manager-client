@@ -11,19 +11,23 @@ import {
 import axios, { AxiosError } from 'axios'
 import { ThunkAction } from 'redux-thunk'
 import { RootStore } from '../store'
+import { useSelector } from 'react-redux'
 
-export const fetchTasks = (): ThunkAction<
-	void,
-	RootStore,
-	unknown,
-	FetchDispatchTypes
-> => {
+export const fetchTasks = (
+	user: string,
+	token: string
+): ThunkAction<void, RootStore, unknown, FetchDispatchTypes> => {
 	return async dispatch => {
 		try {
 			dispatch({ type: FETCH_REQUEST })
 
 			const response: { data: GetProjectsType[] } = await axios.get(
-				'http://localhost:5000/projects'
+				`http://localhost:5000/projects/${user}`,
+				{
+					headers: {
+						authorization: token,
+					},
+				}
 			)
 
 			const data = await response.data

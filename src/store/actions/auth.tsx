@@ -14,9 +14,43 @@ export const signup = (
 ): ThunkAction<void, RootStore, unknown, AuthDispatchTypes> => {
 	return async dispatch => {
 		try {
-			const response: { data: { accessToken: string; error: string } } =
-				await axios.post(`${process.env.REACT_APP_BASE_URL}/login`, data)
-			const token = response.data.accessToken
+			const response: { data: { token: string; error: string } } =
+				await axios.post(`${process.env.REACT_APP_BASE_URL}/signup`, data)
+
+			const token = response.data.token
+			const userId = jwt_decode<customJwtPayload>(token).sub
+			const authData = {
+				token,
+				userId,
+			}
+
+			if (!response.data.error) {
+				localStorage.setItem('token', token)
+				localStorage.setItem('userId', userId)
+			}
+
+			dispatch({ type: AUTH_SUCCESS, payload: authData })
+			cb(userId)
+		} catch (error) {
+			if (axios.isAxiosError(error)) {
+				const userError = error as AxiosError<authErrorResponse>
+				if (userError && userError.response) {
+					dispatch({ type: AUTH_ERROR, payload: error.response!.data })
+				}
+			}
+		}
+	}
+}
+export const signin = (
+	data: signInData,
+	cb: (user: string) => void
+): ThunkAction<void, RootStore, unknown, AuthDispatchTypes> => {
+	return async dispatch => {
+		try {
+			const response: { data: { token: string; error: string } } =
+				await axios.post(`${process.env.REACT_APP_BASE_URL}/signin`, data)
+
+			const token = response.data.token
 			const userId = jwt_decode<customJwtPayload>(token).sub
 			const authData = {
 				token,

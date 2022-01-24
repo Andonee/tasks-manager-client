@@ -13,26 +13,22 @@ import { PostProjectsType } from '../../store/types/tasks'
 const getProjects = (state: RootStore) => state.tasks.tasks
 const getRefetchFlag = (state: RootStore) => state.tasks.refetch
 const getUserName = (state: RootStore) => state.auth.user
+const getToken = (state: RootStore) => state.auth.auth
 
 const Projects = () => {
 	const projects = useSelector(getProjects)
 	const isRefetch = useSelector(getRefetchFlag)
 	const user = useSelector(getUserName)
+	const token = useSelector(getToken)
 
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		console.log(isRefetch)
 		// if (!isRefetch) return
-
-		dispatch(fetchTasks())
-	}, [isRefetch, dispatch])
-
-	const onTaskSelectHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-		const target = e.target as Element
-		console.log(target.id)
-		console.log(process.env.REACT_APP_BASE_URL)
-	}
+		if (!token) return
+		dispatch(fetchTasks(user, token))
+	}, [isRefetch, dispatch, token])
 
 	const onCreateProjectHandler = async () => {
 		const newObject: PostProjectsType = {
@@ -41,11 +37,17 @@ const Projects = () => {
 			description: '',
 			edited: '',
 			tasks: [],
+			belongsTo: user,
 		}
 		try {
 			const response = await axios.post(
 				`${process.env.REACT_APP_BASE_URL}/projects`,
-				newObject
+				newObject,
+				{
+					headers: {
+						authorization: token,
+					},
+				}
 			)
 
 			const data = await response
@@ -67,7 +69,12 @@ const Projects = () => {
 			const id = target.id
 
 			const response = await axios.delete(
-				`${process.env.REACT_APP_BASE_URL}/projects/${id}`
+				`${process.env.REACT_APP_BASE_URL}/projects/${user}/${id}`,
+				{
+					headers: {
+						authorization: token,
+					},
+				}
 			)
 
 			const data = await response
@@ -92,9 +99,10 @@ const Projects = () => {
 				{projects?.map(project => (
 					<ProjectCard
 						name={project.title}
-						url={`/projects/${user}/${project.id}`}
-						id={project.id}
+						url={`/projects/${user}/${project.projectID}`}
+						id={project.projectID}
 						onRemove={onRemoveProjectHandler}
+						key={project.projectID}
 					/>
 				))}
 			</div>

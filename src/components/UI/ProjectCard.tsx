@@ -7,7 +7,7 @@ import styles from './ProjectCard.module.scss'
 type ProjectCardProps = {
 	name: string
 	url: string
-	id: any
+	id: string
 	onRemove: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
